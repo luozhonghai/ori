@@ -1,0 +1,71 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+connection_specification: &spec
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  username: root
+  password: root_password
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *spec
+  database: ori_development
+  seq:
+    user_seq_1:
+      <<: *spec
+      databse: ori_seq_development
+  shards:
+    user_shard_1:
+      <<: *spec
+      database: ori_user1_development
+    user_shard_2:
+      <<: *spec
+      database: ori_user2_development
+    user_shard_3:
+      <<: *spec
+      database: ori_user3_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *spec
+  database: ori_test
+  seq:
+    user_seq_1:
+      <<: *spec
+      databse: ori_seq_test
+  shards:
+    user_shard_1:
+      <<: *spec
+      database: ori_user1_test
+    user_shard_2:
+      <<: *spec
+      database: ori_user2_test
+    user_shard_3:
+      <<: *spec
+      database: ori_user3_test
+
+production:
+  <<: *spec
+  database: ori_production
+  seq:
+    user_seq_1:
+      <<: *spec
+      databse: ori_seq_production
+  shards:
+    user_shard_1:
+      <<: *spec
+      database: ori_user1_production
+    user_shard_2:
+      <<: *spec
+      database: ori_user2_production
+    user_shard_3:
+      <<: *spec
+      database: ori_user3_production
