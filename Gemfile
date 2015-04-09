@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 gem 'bootstrap-sass', '~> 3.3.4'
-
+gem 'jquery-ui-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -34,7 +34,7 @@ gem 'activerecord-turntable', '~> 2.1.1'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -44,3 +44,19 @@ gem 'activerecord-turntable', '~> 2.1.1'
 
 gem 'devise'
 gem 'mysql2'
+
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
+gem 'redis-rack-cache'
+
+gem 'sentry-raven'
+
+gem 'pry'
+# Teaches Pry about step, next, and continue to create a simple debugger.
+# Run 'step' or 'next' in the console
+gem 'pry-nav' 
+gem 'pry-rails', :group => :development # for console
+
+gem "komachi_heartbeat"
+
