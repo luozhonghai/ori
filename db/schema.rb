@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409051823) do
+ActiveRecord::Schema.define(version: 20150414042802) do
+
+  create_table "test_models", force: true do |t|
+    t.string   "task"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_sequence_for "test_models", id: false, force: true do |t|
+    t.integer "id", limit: 8
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

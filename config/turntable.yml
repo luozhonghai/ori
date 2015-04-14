@@ -1,6 +1,20 @@
 #
 # ActiveRecord::Turntable configuration file
 #
+barrage_default: &barrage_default
+  seq_type: barrage
+  options:
+    generators:
+      - name: msec
+        length: 39 # MAX 17.4 years from start_at
+        start_at: 1396278000000 # 2014/04/01 00:00:00 JST
+      - name: redis_worker_id
+        length: 16
+        ttl: 300
+        redis:
+          host: '127.0.0.1'
+      - name: sequence
+        length: 9
 
 development:
   clusters:
@@ -8,6 +22,7 @@ development:
       algorithm: range_bsearch
       seq:
         user_seq:
+          seq_type: mysql
           connection: user_seq_1
       shards:
         - connection: user_shard_1
@@ -25,6 +40,7 @@ test:
       algorithm: range_bsearch
       seq:
         user_seq:
+          seq_type: mysql
           connection: user_seq_1
       shards:
         - connection: user_shard_1
@@ -40,6 +56,7 @@ production:
       algorithm: range_bsearch
       seq:
         user_seq:
+          seq_type: mysql
           connection: user_seq_1
       shards:
         - connection: user_shard_1

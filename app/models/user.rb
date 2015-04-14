@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   turntable :user_cluster, :id
   
   sequencer :user_seq
+
 end
