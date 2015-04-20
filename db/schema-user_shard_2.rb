@@ -41,8 +41,4 @@ ActiveRecord::Schema.define(version: 20150414042802) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_sequence_for "users", id: false, force: true do |t|
-    t.integer "id", limit: 8
-  end
-
 end

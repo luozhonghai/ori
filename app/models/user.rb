@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  turntable :user_cluster, :id
+  #turntable :user_cluster, :id
   
-  sequencer :user_seq
+  #sequencer :user_seq_1
 
 end

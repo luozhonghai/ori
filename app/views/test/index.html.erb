@@ -1,2 +1,100 @@
 <h1>Test#index</h1>
-<p>Find me in app/views/test/index.html.erb</p>
+
+<% options = ["get", "post", "put", "delete"] %>
+<% options_str = options.map { |e| "<option>#{e}</option>" } .join('') %>
+
+<div class="field">
+  <%= label_tag "methods" %> </br>
+  <%= select_tag "rest_method", options_str.html_safe %> </br>
+</div>
+
+<div class="field">
+  <%= label_tag "url", "Base Url" %> </br>
+  <%= text_field_tag "url_content" %> </br>
+</div>
+
+<div class="field">
+  <%= label_tag "params" %>
+  <button type="button" class="btn btn-default" id="add_value">add</button>
+  <table class="table" id="param_table">
+    <thead>
+      <tr>
+        <th>Param Name</th>
+        <th>Value</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<div class="field">
+  <%= label_tag "reponse" %> </br>
+  <%= text_area_tag "response_content" %>
+</div>
+
+<div id="test"></div>
+
+<div class="field">
+  <button type="button" class="btn btn-default" id="submit_test">submit</button>
+</div>
+
+
+<%= javascript_tag do %>
+$(document).ready(function(){
+  
+  var param_template = [
+    "<tr class=\"param_item\" id=\"new_item\">",
+    "<td>",
+      "<input type=\"text\" class=\"form-control param_name\">",
+    "</td>",
+    "<td>",
+      "<input type=\"text\" class=\"form-control param_value\">",
+    "</td>",
+    "<td>",
+      "<button type=\"button\" class=\"btn btn-default btn-delete\">",
+        "<span class=\"glyphicon glyphicon-minus\"></span>",
+      "</button>",
+    "</td>",
+    "</tr>"
+  ].join('');
+
+  var request_options = {
+    url : "",
+    type : "",
+    dataType : 'json',
+    success : function(data) {
+      console.log(data);
+      //alert(data.a);
+      //var obj = $.parseJSON(data);
+      //alert(obj.a);
+    }
+  };
+
+  var item_id=0;
+
+  $("#add_value").delegate(null, "click", onClickAddParamHandler);
+  $("#submit_test").delegate(null, "click", onClickSubmitHandler);
+
+  function onClickAddParamHandler(event) {
+    console.log("add_param");
+    $( "#param_table tbody" ).append(param_template);
+    $( "#new_item .btn-delete" ).delegate(null, "click", {id:  "item_"+item_id }, onClickDeleteParamHandler);
+    $( "#new_item" ).attr("id", "item_"+item_id);
+    item_id++;
+  }
+
+  function onClickDeleteParamHandler(event) {
+    $( "#" + event.data.id ).remove();
+    console.log( "delete param" );
+  }
+
+  function onClickSubmitHandler(event) {
+    request_options.url = $( "#url_content" ).val();
+    request_options.type = $( "#rest_method" ).val();
+    $.ajax(request_options);
+  }
+
+})
+<% end %>

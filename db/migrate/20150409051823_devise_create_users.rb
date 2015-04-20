@@ -39,6 +39,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
 
-    create_sequence_for(:users) # <-- create sequence table
+    #create_sequence_for(:users) # <-- create sequence table
   end
 end
