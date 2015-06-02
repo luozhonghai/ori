@@ -1,0 +1,5 @@
+common: &common
+  rss_feed: "http://www.theriftarcade.com/dk2-games/feed/"
+
+development:
+  <<: *common

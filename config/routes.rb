@@ -1,7 +1,18 @@
+require 'sidekiq/web'
+
+
 Rails.application.routes.draw do
   resources :test_models
 
   get 'test/index'
+
+  get 'test/restful'
+
+  get 'test/rss'
+
+  get 'test/get_dk2_game_image'
+
+  get 'test/geo_map'
 
   devise_for :users, controllers: {sessions: "users/sessions"}
 
@@ -12,6 +23,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'test#index'
 
+  mount Sidekiq::Web => '/sidekiq'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

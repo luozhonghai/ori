@@ -37,4 +37,11 @@ class SeedLoader
 end
 
 #puts FixtureConverter.read_fixture_yml("../db/seeds/test_models.yml").flatten.compact
-print FixtureConverter.read_fixture_dir("../db/seedss")
+puts FixtureConverter.read_fixture_dir("../db/seeds")
+
+#is_expired = true
+unless true
+  is_expired = 1 < 3 
+end
+
+print is_expired

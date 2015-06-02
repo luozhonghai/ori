@@ -51,6 +51,7 @@ gem 'redis'
 gem 'redis-namespace'
 gem 'redis-rails'
 gem 'redis-rack-cache'
+gem 'redis-objects', '~> 0.9.1'
 
 gem 'sentry-raven'
 
@@ -65,3 +66,24 @@ gem 'kaminari'
 gem 'barrage'
 #gem 'turntable', "1.0.10"
 
+# RSS
+gem 'feedjira'
+
+# Faraday
+gem 'faraday'
+gem 'faraday_middleware'
+
+#Util
+gem "setty", "0.0.3"
+
+# for template engine
+gem 'slim-rails', '~> 2.1.4'
+
+#asyn
+gem 'sidekiq'
+gem 'sinatra', :require => nil
+
+#geo
+gem 'geokit-rails'
+gem 'gmaps4rails'
+gem 'underscore-rails'

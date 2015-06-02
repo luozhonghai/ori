@@ -15,13 +15,16 @@
 
 <div class="field">
   <%= label_tag "params" %>
-  <button type="button" class="btn btn-default" id="add_value">add</button>
   <table class="table" id="param_table">
     <thead>
       <tr>
         <th>Param Name</th>
         <th>Value</th>
-        <th></th>
+        <th>
+          <button type="button" class="btn btn-default" id="add_value">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -33,9 +36,6 @@
   <%= label_tag "reponse" %> </br>
   <%= text_area_tag "response_content" %>
 </div>
-
-<div id="test"></div>
-
 <div class="field">
   <button type="button" class="btn btn-default" id="submit_test">submit</button>
 </div>
@@ -43,6 +43,10 @@
 
 <%= javascript_tag do %>
 $(document).ready(function(){
+
+  $(".field").css({
+    "margin" : "10px 0px"
+  });
   
   var param_template = [
     "<tr class=\"param_item\" id=\"new_item\">",
@@ -66,9 +70,9 @@ $(document).ready(function(){
     dataType : 'json',
     success : function(data) {
       console.log(data);
-      //alert(data.a);
       //var obj = $.parseJSON(data);
-      //alert(obj.a);
+      var pre_val = $("#response_content").val();
+      $("#response_content").val(pre_val + JSON.stringify(data) + "\n");
     }
   };
 

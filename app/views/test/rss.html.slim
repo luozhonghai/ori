@@ -1,0 +1,6 @@
+- if @dk2_game_entries.any?
+  .content
+    - @dk2_game_entries.each_with_index do |entry, index|
+      = link_to entry.url, target: "_blank"
+        = image_tag(url_for(:action => 'get_dk2_game_image', :url => entry.image_url), alt:"")
+        .summary = entry.summary

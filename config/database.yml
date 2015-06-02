@@ -10,7 +10,7 @@ connection_specification: &spec
   reconnect: false
   pool: 5
   username: root
-  password: root_password
+  password:
   socket: /tmp/mysql.sock
 
 development:
